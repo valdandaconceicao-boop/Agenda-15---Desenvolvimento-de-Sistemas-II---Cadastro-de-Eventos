@@ -32,7 +32,7 @@ public CadastroPage()
 No arquivo XAML, utilizei a sintaxe `{Binding Propriedade}` nos campos de entrada (`Entry` e `DatePicker`). Isso permite que os valores digitados pelo usuário sejam automaticamente guardados nas propriedades do objeto `Evento` sem a necessidade de capturá-los um a um manualmente por código (Code-Behind).
 
 ### 2. Lógica de Negócio e Cálculos na Model (`Evento.cs`)
-Toda a inteligência e as regras de cálculo do aplicativo foram colocadas diretamente dentro da classe de modelo `Evento.cs` (na pasta `Models`), mantendo a separação de responsabilidades:
+Toda a inteligência e as regras de cálculo del aplicativo foram colocadas diretamente dentro da classe de modelo `Evento.cs` (na pasta `Models`), mantendo a separação de responsabilidades:
 * **Duração do Evento (`TimeSpan`)**: Utilizei a subtração de duas estruturas `DateTime` (`DataTermino - DataInicio`) que retorna um `TimeSpan`. A propriedade `DuracaoDias` lê a quantidade de dias dessa diferença de forma segura.
 * **Custo Total**: Uma propriedade somente leitura que multiplica a quantidade de participantes pelo custo unitário (`NumeroParticipantes * CustoPorParticipante`).
 
@@ -69,6 +69,28 @@ Como estudante técnico e desenvolvedor júnior, consigo identificar oportunidad
 
 ---
 
+## 📸 Capturas de Tela (Funcionamento do Aplicativo)
+
+Aqui estão os espaços reservados para a inserção das capturas de tela demonstrando o funcionamento do aplicativo de Cadastro de Eventos:
+
+### 1. Tela de Cadastro
+*(Insira a captura de tela da página de cadastro vazia ou preenchida aqui)*
+<!-- ![Tela de Cadastro](caminho_para_o_print_cadastro.png) -->
+
+### 2. Validação de Campos Obrigatórios / Incoerentes
+*(Insira a captura de tela mostrando as caixas de alerta de validação de dados aqui)*
+<!-- ![Validação de Dados](caminho_para_o_print_validacao.png) -->
+
+### 3. Tela de Resumo do Evento (Tema Claro)
+*(Insira a captura de tela da página de resumo no modo claro aqui)*
+<!-- ![Resumo Tema Claro](caminho_para_o_print_resumo_claro.png) -->
+
+### 4. Tela de Resumo do Evento (Tema Escuro)
+*(Insira a captura de tela da página de resumo no modo escuro aqui)*
+<!-- ![Resumo Tema Escuro](caminho_para_o_print_resumo_escuro.png) -->
+
+---
+
 ## 🚀 Como Executar o Projeto
 
 1. Certifique-se de ter o **SDK do .NET 9** e o **Visual Studio 2022** (com a carga de trabalho de desenvolvimento móvel em .NET instalada).
@@ -76,3 +98,7 @@ Como estudante técnico e desenvolvedor júnior, consigo identificar oportunidad
 3. Abra o arquivo de solução (`Agenda 15 - Desenvolvimento de Sistemas II - Cadastro de Eventos.sln`) no Visual Studio.
 4. Escolha o dispositivo de teste (pode ser o emulador de Android, iOS ou o próprio Windows Machine).
 5. Compile e execute o projeto pressionando a tecla `F5`.
+
+---
+
+**Dev pelo Valdan Conceição França**
