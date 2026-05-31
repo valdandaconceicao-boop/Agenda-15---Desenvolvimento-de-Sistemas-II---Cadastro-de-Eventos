@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Esta é a página de cadastro de eventos do aplicativo -->
+<!-- Aqui o usuário preenche os dados do evento como nome, datas, participantes e custo -->
+<!-- Uso o ContentPage como base, que é o tipo padrão de página no MAUI -->
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Agenda_15___Desenvolvimento_de_Sistemas_II___Cadastro_de_Eventos.Models"
+             x:Class="Agenda_15___Desenvolvimento_de_Sistemas_II___Cadastro_de_Eventos.Views.CadastroPage"
+             Title="Cadastro de Evento"
+             BackgroundColor="{AppThemeBinding Light=#F3F4F6, Dark=#121212}">
+
+    <!-- ScrollView permite que o conteúdo role para cima e para baixo -->
+    <!-- Isso é importante caso o formulário seja maior que a tela -->
+    <ScrollView>
+
+        <!-- VerticalStackLayout organiza os elementos um abaixo do outro -->
+        <!-- x:DataType conecta esse layout com a classe Evento para os Bindings funcionarem -->
+        <VerticalStackLayout Spacing="20" Padding="20" x:DataType="models:Evento">
+            
+            <!-- Cabeçalho principal da página com fundo roxo -->
+            <!-- Frame cria um card com cantos arredondados e sombra -->
+            <Frame BackgroundColor="#512BD4" 
+                   CornerRadius="12" 
+                   HasShadow="True" 
+                   BorderColor="Transparent"
+                   Padding="20, 25">
+
+                <!-- Empilho os textos do cabeçalho verticalmente e centralizo -->
+                <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+
+                    <!-- Subtítulo pequeno em letras maiúsculas -->
+                    <Label Text="NOVO EVENTO" 
+                           TextColor="#D1C4E9" 
+                           FontSize="12" 
+                           FontAttributes="Bold" 
+                           CharacterSpacing="1.5"
+                           HorizontalOptions="Center" />
+
+                    <!-- Título principal grande em branco -->
+                    <Label Text="Cadastro de Eventos" 
+                           TextColor="White" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           HorizontalOptions="Center" />
+
+                    <!-- Texto explicativo abaixo do título -->
+                    <Label Text="Preencha os detalhes para calcular os custos e a duração" 
+                           TextColor="#E1BEE7" 
+                           FontSize="12" 
+                           HorizontalOptions="Center" 
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Card do formulário com fundo branco (ou escuro no modo noturno) -->
+            <Frame CornerRadius="12" 
+                   HasShadow="True" 
+                   BorderColor="Transparent"
+                   BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+                   Padding="20">
+                
+                <!-- Organizo todos os campos do formulário empilhados verticalmente -->
+                <VerticalStackLayout Spacing="18">
+                    
+                    <!-- Campo para digitar o nome do evento -->
+                    <VerticalStackLayout Spacing="6">
+                        <!-- Label funciona como a etiqueta que identifica o campo -->
+                        <Label Text="Nome do Evento" 
+                               FontAttributes="Bold" 
+                               FontSize="14"
+                               TextColor="{AppThemeBinding Light=#374151, Dark=#E5E7EB}" />
+
+                        <!-- Entry é o campo de texto onde o usuário digita -->
+                        <!-- O Binding conecta o texto digitado com a propriedade Nome do Evento -->
+                        <Entry x:Name="txtNome" 
+                               Placeholder="Ex: Conferência Anual de TI" 
+                               Text="{Binding Nome}"
+                               TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                               PlaceholderColor="#9CA3AF" />
+                    </VerticalStackLayout>
+
+                    <!-- Campo para digitar o local do evento -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Local do Evento" 
+                               FontAttributes="Bold" 
+                               FontSize="14"
+                               TextColor="{AppThemeBinding Light=#374151, Dark=#E5E7EB}" />
+
+                        <!-- Binding conecta com a propriedade Local do Evento -->
+                        <Entry x:Name="txtLocal" 
+                               Placeholder="Ex: Auditório Principal ou Online" 
+                               Text="{Binding Local}"
+                               TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                               PlaceholderColor="#9CA3AF" />
+                    </VerticalStackLayout>
+
+                    <!-- Grid para colocar as duas datas lado a lado -->
+                    <!-- ColumnDefinitions="*, *" divide o espaço em duas colunas iguais -->
+                    <Grid ColumnDefinitions="*, *" ColumnSpacing="16">
+
+                        <!-- Coluna da esquerda: Data de Início -->
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="Data de Início" 
+                                   FontAttributes="Bold" 
+                                   FontSize="14"
+                                   TextColor="{AppThemeBinding Light=#374151, Dark=#E5E7EB}" />
+
+                            <!-- DatePicker mostra um seletor de data nativo do sistema -->
+                            <!-- O Binding conecta a data selecionada com DataInicio do Evento -->
+                            <DatePicker x:Name="dtInicio" 
+                                        Date="{Binding DataInicio}"
+                                        Format="dd/MM/yyyy"
+                                        TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+                        </VerticalStackLayout>
+
+                        <!-- Coluna da direita: Data de Término -->
+                        <VerticalStackLayout Grid.Column="1" Spacing="6">
+                            <Label Text="Data de Término" 
+                                   FontAttributes="Bold" 
+                                   FontSize="14"
+                                   TextColor="{AppThemeBinding Light=#374151, Dark=#E5E7EB}" />
+
+                            <!-- Binding conecta com DataTermino do Evento -->
+                            <DatePicker x:Name="dtTermino" 
+                                        Date="{Binding DataTermino}"
+                                        Format="dd/MM/yyyy"
+                                        TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <!-- Grid para participantes e custo lado a lado -->
+                    <Grid ColumnDefinitions="*, *" ColumnSpacing="16">
+
+                        <!-- Coluna da esquerda: Número de participantes -->
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="Nº Participantes" 
+                                   FontAttributes="Bold" 
+                                   FontSize="14"
+                                   TextColor="{AppThemeBinding Light=#374151, Dark=#E5E7EB}" />
+
+                            <!-- Keyboard="Numeric" mostra o teclado numérico no celular -->
+                            <!-- Binding conecta com NumeroParticipantes do Evento -->
+                            <Entry x:Name="txtParticipantes" 
+                                   Placeholder="Ex: 50" 
+                                   Keyboard="Numeric" 
+                                   Text="{Binding NumeroParticipantes}"
+                                   TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                                   PlaceholderColor="#9CA3AF" />
+                        </VerticalStackLayout>
+
+                        <!-- Coluna da direita: Custo por participante -->
+                        <VerticalStackLayout Grid.Column="1" Spacing="6">
+                            <Label Text="Custo p/ Pessoa (R$)" 
+                                   FontAttributes="Bold" 
+                                   FontSize="14"
+                                   TextColor="{AppThemeBinding Light=#374151, Dark=#E5E7EB}" />
+
+                            <!-- Binding conecta com CustoPorParticipante do Evento -->
+                            <Entry x:Name="txtCusto" 
+                                   Placeholder="Ex: 89,90" 
+                                   Keyboard="Numeric" 
+                                   Text="{Binding CustoPorParticipante}"
+                                   TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                                   PlaceholderColor="#9CA3AF" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Frame>
+
+    <!-- Botão para cadastrar o evento e ir para a página de resumo -->
+    <!-- Clicked define qual método do code-behind será chamado ao clicar -->
+    <Button Text="CADASTRAR E VER RESUMO"
+            Clicked="OnCadastrarClicked"
+            BackgroundColor="#512BD4"
+            TextColor="White"
+            FontAttributes="Bold"
+            FontSize="15"
+            HeightRequest="52"
+            CornerRadius="26"
+            Margin="0,10,0,0" />
+
+    <!-- Créditos do desenvolvedor -->
+    <Label Text="Dev Valdan Conceição França"
+           TextColor="#9CA3AF"
+           FontSize="12"
+           FontAttributes="Italic"
+           HorizontalOptions="Center"
+           HorizontalTextAlignment="Center"
+           Margin="0,10,0,10" />
+
+    </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Este é o AppShell, que define a estrutura de navegação do aplicativo -->
+<!-- O Shell do MAUI gerencia como as páginas são organizadas e como o usuário navega -->
+
+<Shell
+    x:Class="Agenda_15___Desenvolvimento_de_Sistemas_II___Cadastro_de_Eventos.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Agenda_15___Desenvolvimento_de_Sistemas_II___Cadastro_de_Eventos"
+    xmlns:views="clr-namespace:Agenda_15___Desenvolvimento_de_Sistemas_II___Cadastro_de_Eventos.Views"
+    Title="Cadastro de Eventos">
+
+    <!-- ShellContent define qual página será a tela inicial do aplicativo -->
+    <!-- ContentTemplate aponta para a CadastroPage, que é o formulário de cadastro -->
+    <!-- Route define o nome da rota para navegação interna -->
+    <ShellContent
+        Title="Cadastro"
+        ContentTemplate="{DataTemplate views:CadastroPage}"
+        Route="CadastroPage" />
+
+    </Shell>
