@@ -21,12 +21,15 @@ O aplicativo foi projetado para ser intuitivo, bonito e responsivo. Ele é compo
 Para atender aos requisitos solicitados na atividade, implementei as seguintes soluções:
 
 ### 1. Associação de Dados com `BindingContext`
-Na página de cadastro (`CadastroPage.xaml.cs`), associei o `BindingContext` a uma nova instância da classe `Evento`:
+Na página de cadastro (`CadastroPage.xaml.cs`), criamos uma variável privada `_evento` do tipo `Evento` e a associamos ao `BindingContext` do componente no construtor:
 ```csharp
+private Evento _evento;
+
 public CadastroPage()
 {
     InitializeComponent();
-    BindingContext = new Evento(); // Associa a tela à nossa classe de dados
+    _evento = new Evento();
+    BindingContext = _evento; // Associa a tela ao nosso campo de dados
 }
 ```
 No arquivo XAML, utilizei a sintaxe `{Binding Propriedade}` nos campos de entrada (`Entry` e `DatePicker`). Isso permite que os valores digitados pelo usuário sejam automaticamente guardados nas propriedades do objeto `Evento` sem a necessidade de capturá-los um a um manualmente por código (Code-Behind).
@@ -71,23 +74,19 @@ Como estudante técnico e desenvolvedor júnior, consigo identificar oportunidad
 
 ## 📸 Capturas de Tela (Funcionamento do Aplicativo)
 
-Aqui estão os espaços reservados para a inserção das capturas de tela demonstrando o funcionamento do aplicativo de Cadastro de Eventos:
+Aqui estão as capturas de tela reais demonstrando a aplicação em funcionamento:
 
-### 1. Tela de Cadastro
-*(Insira a captura de tela da página de cadastro vazia ou preenchida aqui)*
-<!-- ![Tela de Cadastro](caminho_para_o_print_cadastro.png) -->
+### 1. Tela de Cadastro de Eventos
+![Tela de Cadastro](Tela%201%20-%20Aplica%C3%A7%C3%A3o%20funcionado%20.png)
 
-### 2. Validação de Campos Obrigatórios / Incoerentes
-*(Insira a captura de tela mostrando as caixas de alerta de validação de dados aqui)*
-<!-- ![Validação de Dados](caminho_para_o_print_validacao.png) -->
+### 2. Tela de Resumo de Custos e Duração
+![Resumo do Evento](Tela%202%20-%20Aplica%C3%A7%C3%A3o%20feito%20os%20cadastro.png)
 
-### 3. Tela de Resumo do Evento (Tema Claro)
-*(Insira a captura de tela da página de resumo no modo claro aqui)*
-<!-- ![Resumo Tema Claro](caminho_para_o_print_resumo_claro.png) -->
+### 3. Aplicativo Sendo Executado
+![Execução do Aplicativo](Tela%203%20-%20Aplica%C3%A7%C3%A3o%20sendo%20executada%20e%20funcionado.png)
 
-### 4. Tela de Resumo do Evento (Tema Escuro)
-*(Insira a captura de tela da página de resumo no modo escuro aqui)*
-<!-- ![Resumo Tema Escuro](caminho_para_o_print_resumo_escuro.png) -->
+### 4. Visão Geral do Código-Fonte no Visual Studio
+![Visão Geral do Código](Tela%204%20-%20Vis%C3%A3o%20geral%20do%20codigo%20da%20aplica%C3%A7%C3%A3o%20.png)
 
 ---
 

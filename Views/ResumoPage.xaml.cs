@@ -4,6 +4,8 @@ namespace Agenda_15___Desenvolvimento_de_Sistemas_II___Cadastro_de_Eventos.Views
 
 public partial class ResumoPage : ContentPage, IQueryAttributable
 {
+    private Evento? _evento;
+
     public ResumoPage()
     {
         InitializeComponent();
@@ -13,12 +15,13 @@ public partial class ResumoPage : ContentPage, IQueryAttributable
     {
         if (query.TryGetValue("Evento", out var eventoObj) && eventoObj is Evento evento)
         {
-            BindingContext = evento;
+            _evento = evento;
+            BindingContext = _evento;
         }
     }
 
     private async void OnVoltarClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//CadastroPage");
+        await Shell.Current.GoToAsync("..");
     }
 }
